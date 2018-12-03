@@ -1,0 +1,11 @@
+#include <stdio.h>
+#include <time.h>
+
+int main ()
+{
+	int x;
+	x = srand(time(NULL));
+	x%=100;
+    printf("%d \n", x);
+ //  system("cls");
+}
