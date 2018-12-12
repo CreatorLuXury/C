@@ -1,0 +1,41 @@
+# include <stdio.h>
+# include <stdlib.h>
+# include <dirent.h>
+
+int checkdir(){
+	DIR *dir = opendir("C:/Users/"USERNAME/Desktop");// put here username
+	if (dir){
+		printf("log : dir founded!\n");
+		closedir(dir);
+		return 1;
+	}
+	else if(dir == NULL)
+	{
+		perror("log : dir not found\n");
+		return 0;
+	}
+	else 
+	{
+		printf("unknown error\n");
+	}
+getchar();
+system("cls");
+}
+
+int checkfile()
+{
+	FILE *ff;
+	ff = fopen("oh.jbzd", "r");
+	if (ff){
+		printf("log : file founded!\n");
+		fclose(ff);
+		return 1;
+	}
+	else if (ff == NULL){
+		perror("log: no files\n");
+		return 0;
+	}
+}
+int main(){
+	printf ("control log %d %d\n",checkdir(), checkfile());
+}
