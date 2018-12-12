@@ -3,7 +3,11 @@
 # include <dirent.h>
 
 int checkdir(){
-	DIR *dir = opendir("C:/Users/"USERNAME/Desktop");// put here username
+	char s[50];
+	printf("Specify directory :\n");
+	scanf("%s", &s);
+	printf("%s\n", s);
+	DIR *dir = opendir(s);
 	if (dir){
 		printf("log : dir founded!\n");
 		closedir(dir);
@@ -24,8 +28,12 @@ system("cls");
 
 int checkfile()
 {
-	FILE *ff;
-	ff = fopen("oh.jbzd", "r");
+	char s[50];
+	printf("Specify directory and file name :\n");
+	scanf("%s", &s);
+	printf("%s\n", s);
+	FILE* ff;
+	ff = fopen(s, "r");
 	if (ff){
 		printf("log : file founded!\n");
 		fclose(ff);
@@ -37,5 +45,6 @@ int checkfile()
 	}
 }
 int main(){
-	printf ("control log %d %d\n",checkdir(), checkfile());
+	printf ("control log dir  %d if 1 is ok\n", checkdir());
+	printf ("control log file %d if 1 is ok\n", checkfile());
 }
