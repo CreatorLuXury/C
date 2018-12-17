@@ -1,5 +1,3 @@
-/* BY Creator_LuXury */ 
-/* Simple file Manager */
 # include <stdio.h>
 # include <stdlib.h>
 # include <dirent.h>
@@ -47,29 +45,41 @@ int checkfile(){
 	}
 }
 int remfile(){
+	printf("USE CAUTION  FILES WILL BE COMPLETLY REMOVED FROM DISK\n");
+	char k;
+	system("pause");
+	printf(" ****** ARE YOU SURE TO USE THIS FUNCTION? CANNOT BE UNDONE ******\n\n (Y or N)\n");
+	k = getch();
+	if (k =='y'){
 	char s[50];
 	printf("Specify directory and file name: \n");
 	scanf("%s", &s);
 	printf("%s", s);
 	if(s == NULL){
-		prerror("log: no file or directory\n");
+		prerror("\nlog: no file or directory\n");
 		return 0;
 	}
 	else {
 		remove(s);
-		printf("log: succes\n");
+		printf("\nlog: succes\n");
 		return 1;
+		}
+	}
+	else{
+		return 0;
 	}
 }
 
 int list(){ // Works
 	FILE* ff;
 	char s[50];
-	char fullname[1024];
 	struct dirent *entry;
 	printf("Specify directory for list of files\n");
 	scanf("%s", &s);
 	DIR *dir = opendir(s);
+	char fullname[1024];
+
+
 	if (dir){
 		    printf("\n\n******\n\n");
 		    while ((entry = readdir(dir)) != NULL){
@@ -109,10 +119,10 @@ int main(){
 	while(1){
 	printf("Choose an option: \n 1: Check Directory\n 2: Check file in directory\n 3: List of files in directory\n 4: Remove file form directory\n 9: Clear Console\n 0: Exit\n");
 	k = getch();
-	if (k=='1')printf ("control log: dir  %d if \"1\" is ok\n", checkdir());
-	else if (k=='2')printf ("control log: file %d if \"1\" is ok\n", checkfile());
-	else if (k=='3')printf ("control log: file %d if \"1\" is ok\n", list());
-	else if (k=='4')printf ("control log: %d if \"1\"is ok\n", remfile());
+	if (k=='1')printf ("control log: dir  %d if \"1\" is ok\n\n", checkdir());
+	else if (k=='2')printf ("control log: file %d if \"1\" is ok\n\n", checkfile());
+	else if (k=='3')printf ("control log: file %d if \"1\" is ok\n\n", list());
+	else if (k=='4')printf ("control log: %d if \"1\"is ok\n\n", remfile());
 	else if (k == '9')system("cls");
 	else if(k == '0')break;
 	else {
