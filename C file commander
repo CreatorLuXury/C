@@ -1,0 +1,117 @@
+# include <stdio.h>
+# include <stdlib.h>
+# include <dirent.h>
+# include <sys/types.h>
+# include <errno.h>
+
+
+int checkdir(){
+	char s[50];
+	printf("Specify directory :\n");
+	scanf("%s", &s);
+	printf("%s\n", s);
+	DIR *dir = opendir(s);
+	if (dir){
+		printf("log : dir founded!\n");
+		closedir(dir);
+		return 1;
+	}
+	else if(dir == NULL)
+	{
+		perror("log : dir not found\n");
+		return 0;
+	}
+	else 
+	{
+		printf("unknown error\n");
+	}
+getchar();
+system("cls");
+}
+
+int checkfile()
+{
+	char s[50];
+	printf("Specify directory and file name :\n");
+	scanf("%s", &s);
+	printf("%s\n", s);
+	FILE* ff;
+	ff = fopen(s, "r");
+	if (ff){
+		printf("log : file founded!\n");
+		fclose(ff);
+		return 1;
+	}
+	else if (ff == NULL){
+		perror("log: no files\n");
+		return 0;
+	}
+}
+int remfile(){
+	char s[50];
+	printf("Specify directory and file name: \n");
+	scanf("%s", &s);
+	printf("%s", s);
+	if(s == NULL){
+		prerror("log: no file or directory\n");
+		return 0;
+	}
+	else {
+		remove(s);
+		printf("log: succes\n");
+		return 1;
+	}
+}
+int list(){
+	char s[50];
+    struct dirent *entry;
+	printf("Specify directory for list of files\n");
+	scanf("%s", &s);
+	DIR *dir = opendir(s);
+	FILE* ff;
+	if (dir){
+		    printf("\n\n******\n\n");
+		    while ((entry = readdir(dir)) != NULL) {
+		    ff = (fopen(entry->d_name, "r"));
+
+		    if (ff != NULL){
+		    	printf("%s\n",entry->d_name);
+				fclose(ff);	
+			}
+			else if (ff == NULL) {
+        	printf("%s(directory)\n",entry->d_name);
+   			}
+
+   		}
+		printf("\n******\n");
+		closedir(dir);
+		return 1;
+	}
+	else if(dir == NULL)
+	{
+		perror("log : dir not found\n");
+		return 0;
+	}
+	else 
+	{
+		printf("unknown error\n");
+	}
+
+	
+}
+int main(){
+	char k;
+	while(1){
+	printf("Choose an option: \n 1: Check Directory\n 2: Check file in directory\n 3: List of files in directory\n 4:Remove file form directory\n");
+	k = getch();
+	if (k=='1')printf ("control log dir  %d if \"1\" is ok\n", checkdir());
+	else if (k=='2')printf ("control log file %d if \"1\" is ok\n", checkfile());
+	else if (k=='3')printf ("control log file %d if \"1\"1 is ok\n", list());
+	else if (k=='4')printf ("control log %d if \"1\"is ok\n", remfile());
+	else if (k == '9')system("cls");
+	else if(k == '0')break;
+	else {
+		printf("\n***Invalid key!***\n\n");
+	}
+    }
+}
