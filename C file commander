@@ -1,9 +1,9 @@
+/* BY Creator_LuXury */ 
+/* Simple file Manager */
 # include <stdio.h>
 # include <stdlib.h>
 # include <dirent.h>
 # include <sys/types.h>
-# include <errno.h>
-
 
 int checkdir(){
 	char s[50];
@@ -28,9 +28,7 @@ int checkdir(){
 getchar();
 system("cls");
 }
-
-int checkfile()
-{
+int checkfile(){
 	char s[50];
 	printf("Specify directory and file name :\n");
 	scanf("%s", &s);
@@ -62,7 +60,8 @@ int remfile(){
 		return 1;
 	}
 }
-int list(){
+
+int list(){  // TO FIX
 	char s[50];
     struct dirent *entry;
 	printf("Specify directory for list of files\n");
@@ -99,10 +98,13 @@ int list(){
 
 	
 }
+int copypaste(){
+	
+}
 int main(){
 	char k;
 	while(1){
-	printf("Choose an option: \n 1: Check Directory\n 2: Check file in directory\n 3: List of files in directory\n 4:Remove file form directory\n");
+	printf("Choose an option: \n 1: Check Directory\n 2: Check file in directory\n 3: List of files in directory\n 4: Remove file form directory\n 9: Clear Console\n 0: Exit\n");
 	k = getch();
 	if (k=='1')printf ("control log dir  %d if \"1\" is ok\n", checkdir());
 	else if (k=='2')printf ("control log file %d if \"1\" is ok\n", checkfile());
