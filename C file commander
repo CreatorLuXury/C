@@ -4,8 +4,9 @@
 # include <stdlib.h>
 # include <dirent.h>
 # include <sys/types.h>
+# include <errno.h>
 
-int checkdir(){
+int checkdir(){//check directory function
 	char s[50];
 	printf("Specify directory :\n");
 	scanf("%s", &s);
@@ -28,7 +29,7 @@ int checkdir(){
 getchar();
 system("cls");
 }
-int checkfile(){
+int checkfile(){// check file exist function
 	char s[50];
 	printf("Specify directory and file name :\n");
 	scanf("%s", &s);
@@ -45,42 +46,55 @@ int checkfile(){
 		return 0;
 	}
 }
-int remfile(){
+int remfile(){//remove file function
+	printf("USE CAUTION  FILES WILL BE COMPLETLY REMOVED FROM DISK\n");
+	char k;
+	system("pause");
+	printf(" ****** ARE YOU SURE TO USE THIS FUNCTION? CANNOT BE UNDONE ******\n\n (Y or N)\n");
+	k = getch();
+	if (k =='y'){
 	char s[50];
 	printf("Specify directory and file name: \n");
 	scanf("%s", &s);
 	printf("%s", s);
 	if(s == NULL){
-		prerror("log: no file or directory\n");
+		prerror("\nlog: no file or directory\n");
 		return 0;
 	}
 	else {
 		remove(s);
-		printf("log: succes\n");
+		printf("\nlog: succes\n");
 		return 1;
+		}
+	}
+	else{
+		return 0;
 	}
 }
-
-int list(){  // TO FIX
+int list(){ // file view function
+	FILE* ff;
 	char s[50];
-    struct dirent *entry;
+	struct dirent *entry;
 	printf("Specify directory for list of files\n");
 	scanf("%s", &s);
 	DIR *dir = opendir(s);
-	FILE* ff;
+	char fullname[1024];
+
+
 	if (dir){
 		    printf("\n\n******\n\n");
-		    while ((entry = readdir(dir)) != NULL) {
-		    ff = (fopen(entry->d_name, "r"));
-
+		    while ((entry = readdir(dir)) != NULL){
+			strcpy(fullname,s);
+			strcat(fullname,"\\");
+			strcat(fullname,entry->d_name);
+		    ff = fopen(fullname , "r");
 		    if (ff != NULL){
-		    	printf("%s\n",entry->d_name);
+		    	printf("%s\n", entry->d_name);
 				fclose(ff);	
 			}
 			else if (ff == NULL) {
         	printf("%s(directory)\n",entry->d_name);
    			}
-
    		}
 		printf("\n******\n");
 		closedir(dir);
@@ -98,22 +112,25 @@ int list(){  // TO FIX
 
 	
 }
-int copypaste(){
+int copypaste(){// Unfinished yet
 	
 }
-int main(){
+int main(){// base 
 	char k;
 	while(1){
 	printf("Choose an option: \n 1: Check Directory\n 2: Check file in directory\n 3: List of files in directory\n 4: Remove file form directory\n 9: Clear Console\n 0: Exit\n");
 	k = getch();
-	if (k=='1')printf ("control log dir  %d if \"1\" is ok\n", checkdir());
-	else if (k=='2')printf ("control log file %d if \"1\" is ok\n", checkfile());
-	else if (k=='3')printf ("control log file %d if \"1\"1 is ok\n", list());
-	else if (k=='4')printf ("control log %d if \"1\"is ok\n", remfile());
+	if (k =='1')printf ("control log: dir  %d if \"1\" is ok\n\n", checkdir());
+	else if (k =='2')printf ("control log: file %d if \"1\" is ok\n\n", checkfile());
+	else if (k =='3')printf ("control log: file %d if \"1\" is ok\n\n", list());
+	else if (k =='4')printf ("control log: %d if \"1\"is ok\n\n", remfile());
 	else if (k == '9')system("cls");
-	else if(k == '0')break;
+	else if (k == '0')break;
 	else {
 		printf("\n***Invalid key!***\n\n");
+		system("pause");
+	    system("cls");
 	}
     }
+
 }
