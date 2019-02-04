@@ -1,0 +1,27 @@
+# include <stdio.h>
+# define N 7
+
+struct kwota {
+	int zl;
+	int gr;
+};
+
+void fun(struct kwota *a){
+	int i,j;
+	int mon = 2;
+	int gro = 30;
+	for(i=0;i<N;i++){
+		if (a[i].zl < mon){
+			printf("%d.%dzl\n", a[i].zl, a[i].gr);
+			}
+		else if (a[i].zl == mon && a[i].gr < gro){
+			printf("%d.%dzl\n", a[i].zl, a[i].gr);
+			}
+	}
+}
+
+int main(){
+	struct kwota a[7] = {{3,40},{1,20},{2,20},{1,60},{4,20},{0,40},{0,99}};
+	fun(&a);
+	getchar();
+}
