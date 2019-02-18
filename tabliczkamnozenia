@@ -1,0 +1,33 @@
+#include <stdio.h>
+#define N 10
+
+int main(){
+	int tab[N][N];
+	int i,j;
+	for(i=0;i<N;i++){
+	int a=0;
+	if(i==0);
+	else{
+	while (a<46){
+		a++;
+		printf("%c", 196);
+			}
+	printf("\n");
+	}
+		for(j=0;j<N;j++){
+
+
+			if(i==0 || j==0);
+			else printf("%3d ", tab[i][j]=i*j);
+		if(i!=0)printf("%c", 179);
+
+		}
+
+	printf("\n");
+	}
+	int a=0;
+	while (a<46){
+		a++;
+		printf("%c", 196);
+			}
+}
