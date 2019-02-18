@@ -1,17 +1,17 @@
 #include <stdio.h>
-#define N 10
+#define N 14
+#define B 66
 
 int main(){
 	int tab[N][N];
 	int i,j;
 	for(i=0;i<N;i++){
 	int a=0;
-	if(i==0);
-	else{
-	while (a<46){
-		a++;
-		printf("%c", 196);
-			}
+	if(i!=0){
+		while (a<B){
+			a++;
+			printf("%c", 196);
+		}
 	printf("\n");
 	}
 		for(j=0;j<N;j++){
@@ -26,7 +26,7 @@ int main(){
 	printf("\n");
 	}
 	int a=0;
-	while (a<46){
+	while (a<B){
 		a++;
 		printf("%c", 196);
 			}
