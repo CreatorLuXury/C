@@ -19,11 +19,20 @@ void constr(char *s1, char *s2)
 	}
 }
 
+//OR 
+void constr2(char *s1, char *s2){
+	while(*s1)s1++;
+	while(*s1++=*s2++)
+	;
+}
+
 int main() {
 	
 	char c[60] = "C:\\Users";
 	char z[] = "Admin\\Desktop\\text.txt";
 	constr(c, z);
+	constr2(c, z);
 	puts(c);
 	printf("\n%s", c);
+
 }
