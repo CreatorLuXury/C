@@ -3,7 +3,7 @@
 int strlen2(const char *str)
 {
     int count = 0;
-    while (*(++str) != '\0') ++count;
+    while (*(++str) != '\0') ++count;//or str++ and strlen2(s1)-1;
     return count;
 }
 
