@@ -9,7 +9,7 @@
     struct tm strukt;
     time(&t);
     localtime_r(&t, &strukt);
-	printf("\r%d:%d:%d", strukt.tm_hour, strukt.tm_min, strukt.tm_sec);
+	printf("\r%2d:%2d:%2d", strukt.tm_hour, strukt.tm_min, strukt.tm_sec);
 	fflush(stdout);
 	sleep(1);
 	}
