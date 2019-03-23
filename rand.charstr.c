@@ -1,32 +1,38 @@
 #include <stdio.h>
 #include <time.h>
+#include <string.h>
 
-void constr(char *s1, char *s2){
-	while(*s1)s1++;
-	while(*s1++=*s2++)
-	;
+void append(char* s, char c)
+{
+        int len = strlen(s);
+        s[len] = c;
+        s[len+1] = '\0';
 }
 
-int main (){
+void chartab(char* str){
+int x,a=10;
+char c;
+char tab[10]; 
+*(tab) = 'x';
+*(tab+1) = 'y';
+*(tab+2) = 'c';
+*(tab+3) = 'd';
+*(tab+4) = 'p';
+*(tab+5) = 'f';
+*(tab+6) = 'g';
+*(tab+7) = 'h';
+*(tab+8) = 'z';
+*(tab+9) = 'k';
+while(a--){
+x = rand()%10;
+c = *(tab+x);
+append(str,c);
+}
+printf("%s", str);
+}
+
+int main(){
 	srand(time(0));
-
-	int count = 12, x;
-	char *c;
-	char racha[50] = "file.";
-	while (count--){
-	x = rand()%11;
-	if(x==0)*c = 'a';
-	else if(x==1)*c = 'b';
-	else if(x==2)*c = 'c';
-	else if(x==3)*c = 'd';
-	else if(x==4)*c = 'e';
-	else if(x==5)*c = 'f';
-	else if(x==6)*c = 'g';
-	else if(x==7)*c = 'h';
-	else if(x==8)*c = 'i';
-	else if(x==9)*c = 'j';
-	else *c = 'z';
-	constr(racha, c);
-}
-	printf("%s", racha);
+	char str[50] = "a";
+	chartab(str);
 }
