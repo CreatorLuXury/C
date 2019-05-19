@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+
+
+void wypelnij(int *tab, int a){
+
+	int i;
+	for(i=0; i<a; i++){
+		*(tab+i) = rand() % 21;
+	}
+}
+void wypisz(int *tab, int a){
+	int i;
+	for(i=0;i<a;i++){
+		printf("%d ", *(tab+i));
+	}
+}
+
+int czy_posortowany_ciag(int *tab, int a){
+		int i;
+		for(i=1;i<a;i++){
+			if(tab[i] < tab[i-1]){
+				return 0;
+			}
+		}
+	return 1;
+}
+void mieszaj(int *tab, int a){
+	int temp;
+	int x = rand() % a;
+	int y = rand() % a;
+	temp = *(tab + x);
+	*(tab+x) = *(tab + y);
+	*(tab+y) = temp;
+//	printf("%d ", tab[x]);	
+	}
+
+void sortuj(int *tab, int a){
+	while(!czy_posortowany_ciag(tab,a)){
+		mieszaj(tab, a);
+	}
+	printf("\n");
+	wypisz (tab,a);
+}
+
+#define a 10
+
+int main(){	
+	srand(time(0));
+//	const int a = 5;
+	int tab[a];
+	wypelnij(tab, a);
+	wypisz(tab, a);
+	sortuj(tab, a);
+}
