@@ -7,4 +7,4 @@ ASCII game based on 2D array -> [Here](https://github.com/CreatorLuXury/C/blob/m
 
 An experimental malware -> [Here](https://github.com/CreatorLuXury/C/blob/master/DESOLATOR_malware.c)
 
-File manager -> [Here] (https://github.com/CreatorLuXury/C/blob/master/C file commander)
+File manager -> [Here] (https://github.com/CreatorLuXury/C/blob/master/C%20file%20commander)
